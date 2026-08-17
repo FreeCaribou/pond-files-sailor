@@ -70,6 +70,9 @@ export function AppHeader({ breadcrumbs = [], folderId }: AppHeaderProps) {
                                                     <span>{item.title}</span>
                                                 </Link>
                                             ))}
+                                            <div className="flex items-center space-x-2 font-medium">
+                                                <NewFolderForm folderId={folderId} />
+                                            </div>
                                         </div>
 
                                         <div className="flex flex-col space-y-4">
