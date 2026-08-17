@@ -1,0 +1,16 @@
+services:
+  postgres:
+    image: postgres:17-alpine
+    container_name: postgres-db-pondfilessailor
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: pondfilessailor
+      POSTGRES_PASSWORD: pondfilessailor
+      POSTGRES_DB: pondfilessailor_pg
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
