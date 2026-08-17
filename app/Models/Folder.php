@@ -2,20 +2,20 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Folder extends Model
 {
-    /** @use HasFactory<\Database\Factories\SavedObjectPropFactory> */
+    /** @use HasFactory<SavedObjectPropFactory> */
     use HasFactory;
 
     use HasUuids;
 
-    protected $fillable = ['label', 'description'];
+    protected $fillable = ['label', 'description', 'user_id', 'parent_id'];
 
     public function user(): BelongsTo
     {
@@ -49,5 +49,4 @@ class Folder extends Model
 
         return $ancestors;
     }
-
 }

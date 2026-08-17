@@ -20,7 +20,7 @@ export default function Dashboard({
 }) {
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
-            <Head title="Dashboard" />
+            <Head title="Home" />
 
             <h1 className='m-2'>My files and folders</h1>
 

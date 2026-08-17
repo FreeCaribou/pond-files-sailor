@@ -14,6 +14,7 @@ import { Link, usePage } from '@inertiajs/react';
 import { FolderGit, Folders, Menu } from 'lucide-react';
 import AppLogo from './app-logo';
 import AppLogoIcon from './app-logo-icon';
+import NewFolderForm from './new-folder-form';
 
 const mainNavItems: NavItem[] = [
     {
@@ -35,12 +36,14 @@ const activeItemStyles = 'text-neutral-900 dark:bg-neutral-800 dark:text-neutral
 
 interface AppHeaderProps {
     breadcrumbs?: BreadcrumbItem[];
+    folderId?: string;
 }
 
-export function AppHeader({ breadcrumbs = [] }: AppHeaderProps) {
+export function AppHeader({ breadcrumbs = [], folderId }: AppHeaderProps) {
     const page = usePage<SharedData>();
     const { auth } = page.props;
     const getInitials = useInitials();
+
     return (
         <>
             <div className="border-sidebar-border/80 border-b">
@@ -115,6 +118,9 @@ export function AppHeader({ breadcrumbs = [] }: AppHeaderProps) {
                                         )}
                                     </NavigationMenuItem>
                                 ))}
+                                <NavigationMenuItem key="add-folder" className="relative flex h-full items-center">
+                                    <NewFolderForm folderId={folderId} />
+                                </NavigationMenuItem>
                             </NavigationMenuList>
                         </NavigationMenu>
                     </div>

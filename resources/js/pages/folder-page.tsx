@@ -28,7 +28,7 @@ export default function FolderPage({
     }, [currentFolder]);
 
     return (
-        <AppLayout breadcrumbs={breadcrumbs}>
+        <AppLayout breadcrumbs={breadcrumbs} folderId={currentFolder.id}>
             <Head title={currentFolder.label} />
 
             <h1 className='m-2'>{currentFolder.label}</h1>

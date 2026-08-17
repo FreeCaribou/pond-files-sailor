@@ -40,7 +40,7 @@ export interface User {
 }
 
 export interface Folder {
-    id: number;
+    id: string;
     label: string;
     created_at: string;
     updated_at: string;
@@ -48,7 +48,7 @@ export interface Folder {
 }
 
 export interface File {
-    id: number;
+    id: string;
     name: string;
     created_at: string;
     updated_at: string;
