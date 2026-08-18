@@ -25,22 +25,22 @@ export default function Dashboard({
             <h1 className='m-2'>My files and folders</h1>
 
             {folders?.length > 0 && (
-                <div className='mx-8 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4'>
+                <div className='mx-8 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4'>
                     {folders.map((folder) => (
                         <React.Fragment key={folder.id}>
-                            <Link href={'/folders/' + folder.id} className='rounded-md border border-solid border-primary p-2'>
-                                <FolderIcon className='text-primary'></FolderIcon> {folder.label}
+                            <Link href={'/folders/' + folder.id} className='rounded-md border text-secondary border-solid border-secondary p-2 flex gap-2'>
+                                <FolderIcon /> {folder.label}
                             </Link>
                         </React.Fragment>
                     ))}
                 </div>
             )}
 
-            <div className='mx-8 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4'>
+            <div className='mx-8 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4'>
                 {files.map((file) => (
                     <React.Fragment key={file.id}>
-                        <div className='rounded-md border border-solid border-primary p-2 whitespace-nowrap overflow-hidden text-ellipsis'>
-                            <FileIcon className='text-primary'></FileIcon> {file.name}
+                        <div className='rounded-md text-primary border border-solid border-primary p-2 whitespace-nowrap overflow-hidden text-ellipsis'>
+                            <FileIcon /> {file.name}
                         </div>
                     </React.Fragment>
                 ))}
