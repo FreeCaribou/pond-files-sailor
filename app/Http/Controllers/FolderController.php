@@ -22,8 +22,8 @@ class FolderController extends Controller
 
         return Inertia::render('folder-page', [
             'files' => $files,
-            'currentFolder' => $currentFolder,
             'folders' => $folders,
+            'currentFolder' => $currentFolder,
             'currentFolderAncestors' => $currentFolder->ancestors(),
         ]);
     }

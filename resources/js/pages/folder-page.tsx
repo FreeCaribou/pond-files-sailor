@@ -9,29 +9,39 @@ export default function FolderPage({
     folders = [],
     files = [],
     currentFolderAncestors = [],
+    isHome = false,
 }: {
     currentFolder: Folder;
     folders: Folder[];
     files: File[];
     currentFolderAncestors: Folder[];
+    isHome: boolean;
 }) {
 
     const [breadcrumbs, setBreadcrumbs] = useState<BreadcrumbItem[]>([]);
 
     useEffect(() => {
-        const tmpBreacrumbs: BreadcrumbItem[] = [{ title: currentFolder.label, href: `/folders/${currentFolder.id}` }];
-        currentFolderAncestors.forEach(cfa => {
-            tmpBreacrumbs.push({ title: cfa.label, href: `/folders/${cfa.id}` })
-        });
-        tmpBreacrumbs.push({ title: 'Home', href: '/' });
-        setBreadcrumbs(tmpBreacrumbs.reverse());
-    }, [currentFolder]);
+        if (isHome) {
+            setBreadcrumbs([{
+                title: 'Home',
+                href: '/',
+            }]);
+        } else {
+            const tmpBreacrumbs: BreadcrumbItem[] = [{ title: currentFolder.label, href: `/folders/${currentFolder.id}` }];
+            currentFolderAncestors.forEach(cfa => {
+                tmpBreacrumbs.push({ title: cfa.label, href: `/folders/${cfa.id}` })
+            });
+            tmpBreacrumbs.push({ title: 'Home', href: '/' });
+            setBreadcrumbs(tmpBreacrumbs.reverse());
+        }
+
+    }, [currentFolder, isHome]);
 
     return (
-        <AppLayout breadcrumbs={breadcrumbs} folderId={currentFolder.id}>
-            <Head title={currentFolder.label} />
+        <AppLayout breadcrumbs={breadcrumbs} folderId={currentFolder?.id}>
+            <Head title={isHome ? 'Home' : currentFolder.label} />
 
-            <h1 className='m-2'>{currentFolder.label}</h1>
+            <h1 className='m-2'>{isHome ? 'My files and folders' : currentFolder.label}</h1>
 
             {folders?.length > 0 && (
                 <div className='mx-8 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4'>

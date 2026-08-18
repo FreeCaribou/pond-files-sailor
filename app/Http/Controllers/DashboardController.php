@@ -14,9 +14,10 @@ class DashboardController extends Controller
         $folders = Folder::where('user_id', Auth::id())->whereNull('parent_id')->get();
         $files = File::where('user_id', Auth::id())->whereNull('folder_id')->get();
 
-        return Inertia::render('dashboard', [
+        return Inertia::render('folder-page', [
             'folders' => $folders,
             'files' => $files,
+            'isHome' => true
         ]);
     }
 }
