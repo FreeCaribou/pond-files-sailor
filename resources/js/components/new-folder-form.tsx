@@ -1,11 +1,12 @@
 import { Form } from '@inertiajs/react';
-import { FolderPlus } from 'lucide-react';
+import { FolderPlus, SaveIcon } from 'lucide-react';
 import { useState } from 'react';
 import { Button } from './ui/button';
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from './ui/dialog';
 import { Field, FieldGroup } from './ui/field';
 import { Label } from './ui/label';
 import { Input } from './ui/input';
+import { Spinner } from './ui/spinner';
 
 export default function NewFolderForm({
     folderId,
@@ -13,9 +14,11 @@ export default function NewFolderForm({
     folderId?: string;
 }) {
     const [openDialogAddFolder, setOpenDialogAddFolder] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
 
     const handleSuccess = () => {
         setOpenDialogAddFolder(false);
+        setIsLoading(false);
     }
 
     return (
@@ -33,7 +36,7 @@ export default function NewFolderForm({
                     </DialogDescription>
                 </DialogHeader>
                 <Form method='post' action={'/folders' + (folderId ? `/${folderId}/folders` : '')}
-                    resetOnSuccess={['label', 'description']} onSuccess={handleSuccess}>
+                    resetOnSuccess={['label', 'description']} onSuccess={handleSuccess} onBefore={() => setIsLoading(true)}>
                     <FieldGroup>
                         <Field>
                             <Label htmlFor="form-folder-label" className='text-secondary'>Label *</Label>
@@ -45,7 +48,7 @@ export default function NewFolderForm({
                         </Field>
                     </FieldGroup>
                     <DialogFooter className='mt-5'>
-                        <Button type="submit" className='bg-secondary'>Save folder</Button>
+                        <Button type="submit" className='bg-secondary'>{isLoading ? <Spinner /> : <SaveIcon />} Save folder</Button>
                     </DialogFooter>
                 </Form>
             </DialogContent>

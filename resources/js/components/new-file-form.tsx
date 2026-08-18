@@ -1,11 +1,12 @@
 import { Form } from '@inertiajs/react';
-import { FolderPlus } from 'lucide-react';
+import { FolderPlus, SaveIcon } from 'lucide-react';
 import { useState } from 'react';
 import { Button } from './ui/button';
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from './ui/dialog';
 import { Field, FieldGroup } from './ui/field';
 import { Label } from './ui/label';
 import { Input } from './ui/input';
+import { Spinner } from './ui/spinner';
 
 export default function NewFileForm({
     folderId,
@@ -13,9 +14,11 @@ export default function NewFileForm({
     folderId?: string;
 }) {
     const [openDialogAddFile, setOpenDialogAddFile] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
 
     const handleSuccess = () => {
         setOpenDialogAddFile(false);
+        setIsLoading(false);
     }
 
     return (
@@ -34,7 +37,7 @@ export default function NewFileForm({
                         </DialogDescription>
                     </DialogHeader>
                     <Form method='post' action={folderId ? `/folders/${folderId}/files` : '/files'}
-                        resetOnSuccess={['file', 'description']} onSuccess={handleSuccess}>
+                        resetOnSuccess={['file', 'description']} onSuccess={handleSuccess} onBefore={() => setIsLoading(true)}>
                         <FieldGroup>
                             <Field>
                                 <Label htmlFor="form-file-file" className='text-secondary'>File *</Label>
@@ -46,7 +49,7 @@ export default function NewFileForm({
                             </Field>
                         </FieldGroup>
                         <DialogFooter className='mt-5'>
-                            <Button type="submit" className='bg-secondary'>Save file</Button>
+                            <Button type="submit" className='bg-secondary'>{isLoading ? <Spinner /> : <SaveIcon />} Save file</Button>
                         </DialogFooter>
                     </Form>
                 </DialogContent>

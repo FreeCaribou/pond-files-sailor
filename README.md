@@ -6,11 +6,10 @@ And I love word joke (yeah, pond != cloud and sailor != drive ... and I just lik
 
 ## TODO for the base app
 
-- Add some files in a folder
-- Possibility to have a share key for a file
 - Change user info
 - Show what amount of mega bites it's used
 - i18n
+- Possibility to have a share key for a file
 - Color and icon change for type of file, and for folder, is file present or not (or sub folder)
 - Have some text area that we can just save
 - Make verification of size of the file
