@@ -28,7 +28,7 @@ class FolderController extends Controller
         ]);
     }
 
-    public function addFolder(Request $request)
+    public function add(Request $request)
     {
         $request->validate([
             'label' => 'required|string|max:255',
@@ -44,7 +44,6 @@ class FolderController extends Controller
         Log::info('Creation of a folder '.$newFolder->id.' for user '.Auth::id());
     }
 
-    // TODO verification thant user has the parent folder !
     public function addSubFolder(Request $request, string $folderId)
     {
         $request->validate([

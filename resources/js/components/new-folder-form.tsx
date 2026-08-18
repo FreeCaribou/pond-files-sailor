@@ -19,37 +19,36 @@ export default function NewFolderForm({
     }
 
     return (
-        <div>
-            <Dialog open={openDialogAddFolder} onOpenChange={setOpenDialogAddFolder}>
-                <DialogTrigger asChild>
-                    <Button variant="ghost" className="cursor-pointer">
-                        <FolderPlus className="text-secondary" /> Add folder
-                    </Button>
-                </DialogTrigger>
-                <DialogContent className="sm:max-w-sm">
-                    <DialogHeader>
-                        <DialogTitle>Add a new dossier</DialogTitle>
-                        <DialogDescription className='text-secondary'>
-                            Create a new dossier
-                        </DialogDescription>
-                    </DialogHeader>
-                    <Form method='post' action={'/folders' + (folderId ? `/${folderId}` : '')} resetOnSuccess={['label', 'description']} onSuccess={handleSuccess}>
-                        <FieldGroup>
-                            <Field>
-                                <Label htmlFor="form-folder-label" className='text-secondary'>Label *</Label>
-                                <Input id="form-folder-label" className='focus-visible:ring-secondary' name="label" />
-                            </Field>
-                            <Field>
-                                <Label htmlFor="form-folder-description" className='text-secondary'>Description</Label>
-                                <Input id="form-folder-description" className='focus-visible:ring-secondary' name="description" />
-                            </Field>
-                        </FieldGroup>
-                        <DialogFooter className='mt-5'>
-                            <Button type="submit" className='bg-secondary'>Save changes</Button>
-                        </DialogFooter>
-                    </Form>
-                </DialogContent>
-            </Dialog>
-        </div>
+        <Dialog open={openDialogAddFolder} onOpenChange={setOpenDialogAddFolder}>
+            <DialogTrigger asChild>
+                <Button variant="ghost" className="cursor-pointer">
+                    <FolderPlus className="text-secondary" /> Add folder
+                </Button>
+            </DialogTrigger>
+            <DialogContent className="sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl">
+                <DialogHeader>
+                    <DialogTitle>Add folder</DialogTitle>
+                    <DialogDescription className='text-secondary'>
+                        Create a new dossier
+                    </DialogDescription>
+                </DialogHeader>
+                <Form method='post' action={'/folders' + (folderId ? `/${folderId}/folders` : '')}
+                    resetOnSuccess={['label', 'description']} onSuccess={handleSuccess}>
+                    <FieldGroup>
+                        <Field>
+                            <Label htmlFor="form-folder-label" className='text-secondary'>Label *</Label>
+                            <Input id="form-folder-label" className='focus-visible:ring-secondary' name="label" />
+                        </Field>
+                        <Field>
+                            <Label htmlFor="form-folder-description" className='text-secondary'>Description</Label>
+                            <Input id="form-folder-description" className='focus-visible:ring-secondary' name="description" />
+                        </Field>
+                    </FieldGroup>
+                    <DialogFooter className='mt-5'>
+                        <Button type="submit" className='bg-secondary'>Save folder</Button>
+                    </DialogFooter>
+                </Form>
+            </DialogContent>
+        </Dialog>
     );
 }

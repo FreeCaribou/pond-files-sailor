@@ -6,26 +6,25 @@ And I love word joke (yeah, pond != cloud and sailor != drive ... and I just lik
 
 ## TODO for the base app
 
-- Think about the design (and color)
-- Create base folder
 - Add some files in a folder
 - Possibility to have a share key for a file
 - Change user info
 - Show what amount of mega bites it's used
 - i18n
-- Breadcrumb of the folders and sub folder
 - Color and icon change for type of file, and for folder, is file present or not (or sub folder)
+- Have some text area that we can just save
+- Make verification of size of the file
+- Error management (for 404 too)
 - Clean the app (delete useless route and component ! see what to refactor and re use)
 
 ## TODO for better app
 
 - Share files by email
-- Systems to hacve folder managed by multiple users (analyse that too ...)
+- Systems to have folder managed by multiple users (analyse that too ...)
 - Admin mode ?
 - Share folder ?
 - Easily move a file to a folder to another folder
 - Preview mode for some kind of file ? Like picture and pdf
-- An icon of course !
 - Dark mode ?
 - Other thing probably
 

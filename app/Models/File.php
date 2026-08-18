@@ -2,19 +2,20 @@
 
 namespace App\Models;
 
+use Database\Factories\SavedObjectPropFactory;
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Concerns\HasUuids;
 
 class File extends Model
 {
-    /** @use HasFactory<\Database\Factories\SavedObjectPropFactory> */
+    /** @use HasFactory<SavedObjectPropFactory> */
     use HasFactory;
 
     use HasUuids;
 
-    protected $fillable = ['name', 'description', 'path', 'size', 'mime_type'];
+    protected $fillable = ['name', 'description', 'path', 'size', 'mime_type', 'user_id', 'folder_id', 'type'];
 
     public function user(): BelongsTo
     {

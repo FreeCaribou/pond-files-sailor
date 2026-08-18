@@ -2,9 +2,9 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
-use App\Models\Folder;
 use App\Models\File;
+use App\Models\Folder;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -39,7 +39,7 @@ class DatabaseSeeder extends Seeder
         $folderFive = Folder::create(['label' => 'Videos', 'user_id' => $userOne->id]);
         $folderSix = Folder::create(['label' => 'Documents', 'user_id' => $userOne->id]);
         $folderSeven = Folder::create(['label' => 'Books', 'user_id' => $userOne->id]);
-        $folderEight =  Folder::create(['label' => 'Work !', 'user_id' => $userOne->id]);
+        $folderEight = Folder::create(['label' => 'Work !', 'user_id' => $userOne->id]);
         $folderNine = Folder::create(['label' => 'Nothing', 'user_id' => $userOne->id]);
         $folderTwoOne = Folder::create(['label' => 'Wallpaper', 'user_id' => $userOne->id, 'parent_id' => $folderTwo->id]);
         $folderTwoTwo = Folder::create(['label' => 'Suomi Holiday', 'user_id' => $userOne->id, 'parent_id' => $folderTwo->id]);
@@ -51,14 +51,16 @@ class DatabaseSeeder extends Seeder
             'mime_type' => 'application/pdf',
             'size' => 159753,
             'path' => 'FakeDocPathOne.pdf',
-            'user_id' => $userOne->id
+            'user_id' => $userOne->id,
+            'type' => 'pdf',
         ]);
         $fileTwo = File::create([
             'name' => 'nice_resume_cv.pdf',
             'mime_type' => 'application/pdf',
             'size' => 159753,
             'path' => 'FakeDocPathTwo.pdf',
-            'user_id' => $userOne->id
+            'user_id' => $userOne->id,
+            'type' => 'pdf',
         ]);
         $fileThree = File::create([
             'name' => 'nice_picture.jpg',
@@ -66,7 +68,8 @@ class DatabaseSeeder extends Seeder
             'size' => 159753,
             'path' => 'FakePicturePathThree.jpg',
             'user_id' => $userOne->id,
-            'folder_id' => $folderTwo->id
+            'folder_id' => $folderTwo->id,
+            'type' => 'jpg',
         ]);
         $fileFour = File::create([
             'name' => 'tamere.jpg',
@@ -74,7 +77,8 @@ class DatabaseSeeder extends Seeder
             'size' => 159753,
             'path' => 'FakePicturePathFour.jpg',
             'user_id' => $userOne->id,
-            'folder_id' => $folderTwoTwoOne->id
+            'folder_id' => $folderTwoTwoOne->id,
+            'type' => 'jpg',
         ]);
         $fileFive = File::create([
             'name' => 'northest_tram.jpg',
@@ -82,7 +86,8 @@ class DatabaseSeeder extends Seeder
             'size' => 159753,
             'path' => 'FakePicturePathFive.jpg',
             'user_id' => $userOne->id,
-            'folder_id' => $folderTwoTwoOne->id
+            'folder_id' => $folderTwoTwoOne->id,
+            'type' => 'jpg',
         ]);
     }
 }

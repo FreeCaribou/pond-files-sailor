@@ -15,6 +15,7 @@ import { FolderGit, Folders, Menu } from 'lucide-react';
 import AppLogo from './app-logo';
 import AppLogoIcon from './app-logo-icon';
 import NewFolderForm from './new-folder-form';
+import NewFileForm from './new-file-form';
 
 const mainNavItems: NavItem[] = [
     {
@@ -73,6 +74,9 @@ export function AppHeader({ breadcrumbs = [], folderId }: AppHeaderProps) {
                                             <div className="flex items-center space-x-2 font-medium">
                                                 <NewFolderForm folderId={folderId} />
                                             </div>
+                                            <div className="flex items-center space-x-2 font-medium">
+                                                <NewFileForm folderId={folderId} />
+                                            </div>
                                         </div>
 
                                         <div className="flex flex-col space-y-4">
@@ -123,6 +127,7 @@ export function AppHeader({ breadcrumbs = [], folderId }: AppHeaderProps) {
                                 ))}
                                 <NavigationMenuItem key="add-folder" className="relative flex h-full items-center">
                                     <NewFolderForm folderId={folderId} />
+                                    <NewFileForm folderId={folderId} />
                                 </NavigationMenuItem>
                             </NavigationMenuList>
                         </NavigationMenu>

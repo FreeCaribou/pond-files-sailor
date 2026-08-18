@@ -32,6 +32,7 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->string('path', length: 2048);
             $table->string('mime_type');
+            $table->string('type');
             // In bytes
             $table->unsignedBigInteger('size');
             $table->foreignIdFor(Folder::class)->nullable()->constrained()->nullOnDelete();
