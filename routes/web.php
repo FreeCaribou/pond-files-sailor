@@ -17,6 +17,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/files', [FileController::class, 'add'])->name('file.add');
 
     Route::post('/folders/{folderId}/files', [FileController::class, 'addInFolder'])->name('file.addInFolder');
+
+    Route::get('/files/{folderId}/download', [FileController::class, 'download'])->name('file.download');
 });
 
 require __DIR__.'/settings.php';

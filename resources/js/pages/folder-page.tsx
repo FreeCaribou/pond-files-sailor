@@ -58,9 +58,10 @@ export default function FolderPage({
             <div className='mx-8 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4'>
                 {files.map((file) => (
                     <React.Fragment key={file.id}>
-                        <div className='rounded-md border text-primary border-solid border-primary p-2 whitespace-nowrap overflow-hidden text-ellipsis'>
+                        <a href={`/files/${file.id}/download`}
+                            className='rounded-md border text-primary border-solid border-primary p-2 whitespace-nowrap overflow-hidden text-ellipsis'>
                             <FileIcon /> {file.name}
-                        </div>
+                        </a>
                     </React.Fragment>
                 ))}
             </div>

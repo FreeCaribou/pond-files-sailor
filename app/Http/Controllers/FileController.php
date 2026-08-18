@@ -7,6 +7,8 @@ use App\Models\Folder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\Storage;
 
 class FileController extends Controller
 {
@@ -64,5 +66,22 @@ class FileController extends Controller
             ]);
             Log::info('Creation of a file '.$newFile->id.' named by the system '.$newFile->path.' added to the folder '.$parentFolder->id.'for user '.Auth::id());
         }
+    }
+
+    public function download(string $fileId)
+    {
+        $userId = Auth::id();
+        $file = File::find($fileId);
+        if ($userId != $file->user_id) {
+            return redirect()->route('error')->withErrors(['error.not-your-file']);
+        }
+
+        $fileContent = Storage::get($file->path);
+
+        return Response::make($fileContent, 200, [
+            'Content-Type' => $file->mime_type,
+            'Content-Disposition' => 'attachment; filename="'.$file->name.'"',
+            'Content-Length' => strlen($fileContent),
+        ]);
     }
 }
